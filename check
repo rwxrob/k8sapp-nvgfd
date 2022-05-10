@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# change this to the current release version after updating
+current=v0.5.0
+
+latest=$(curl -sSL https://api.github.com/repos/nvidia/gpu-feature-discovery/releases/latest | jq -r .name)
+
+printf "current: %s\nlatest:  %s\n" "$current" "$latest"
+
+test "$current" = "$latest" && exit 0
+exit 1
